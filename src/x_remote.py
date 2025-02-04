@@ -6,12 +6,14 @@ x_remote: A utility to execute a set of commands on different devices using SSH.
 The script reads a YAML file with device information and commands to execute.
 
 Usage:
-    python x_remote.py --commands commands.yaml
+    python x_remote.py --commands verification_commands.yaml
 
 Author: C. Ayala - ayalac@algonquincollege.com
 Date: September 16th 2024
-"""
 
+"""
+# TODO:  1. Rename script to xremote.
+# TODO:  2. Create a hash to write into the file to ensure uniqueness in the execution of the commands
 
 import os
 import sys
@@ -25,7 +27,8 @@ from netmiko import ConnectHandler, NetMikoTimeoutException, NetMikoAuthenticati
 def parse_arguments():
     """Parse the command-line arguments."""
     parser = argparse.ArgumentParser(description="SSH into a device and execute commands.")
-    parser.add_argument("--commands", required=True, help="File with commands to run on the device.")
+
+    parser.add_argument("commands", help="Yaml file with commands to run on the device.")
     return parser.parse_args()
 
 
